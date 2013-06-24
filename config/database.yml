@@ -1,14 +1,14 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: railsplate_development
+  database: rspec_development
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: railsplate_test
+  database: rspec_test
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: railsplate_production
+  database: rspec_production
