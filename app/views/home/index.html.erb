@@ -11,14 +11,30 @@
         Tredule will help you and those who care about you make sure that you never miss a beat when it comes to your treatment
       </div>
     </div><!-- end of #banner-copy -->
-    <div id="central-login">
-      <%= simple_form_for(@patient,:url => patient_index_path, :method => :post, :html => {:class => 'form-horizontal' }) do |f| %>
-        <%= f.input :username %>
-        <%= f.input :email %>
-        <%= f.input :phone %>
-        <%= f.input :password %>
-      <%= f.button :submit, label: 'Sign-Up!' %>
-      <% end %>
-    </div><!-- end of #central-login -->
+    <div id="central-signup">
+      <div class='row-fluid'>
+        <div id='patient-signup'>
+          <h2>Patients</h2>
+          <%= simple_form_for(@patient,:url => patient_index_path, :method => :post, :html => {:class => 'form-horizontal' }) do |f| %>
+            <%= f.input :username %>
+            <%= f.input :email %>
+            <%= f.input :phone %>
+            <%= f.input :password %>
+          <%= f.button :submit, 'Sign-Up!' %>
+          <% end %>
+        </div><!-- end of #patient-signup -->
+        <div id='doctor-signup'>
+          <h2>Doctors</h2>
+          <%= simple_form_for(@doctor, :url => doctor_index_path, :method => :post, :html => {:class => 'form-horizontal' }) do |f| %>
+            <%= f.input :username %>
+            <%= f.input :email %>
+            <%= f.input :phone %>
+            <%= f.input :speciality, :as => :grouped_select, :collection => [['Family', ['General Practioner']],['Adult', ['Surgeon']], ['Childrens', ['Pediatrics']], ['Sport', ['Physiotherapy', 'Orthopedics']]], :group_method => :last %>
+            <%= f.input :password %>
+          <%= f.button :submit, 'Create Account' %>
+          <% end %>
+        </div><!-- end of #doctor-signup -->
+      </div><!-- #row-fluid -->
+    </div><!-- end of #central-signup -->
   </div>
 </div>
