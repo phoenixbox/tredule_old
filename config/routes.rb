@@ -3,6 +3,7 @@ Railsplate::Application.routes.draw do
 
   resources :patient
   resources :doctor
+  resources :session
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
