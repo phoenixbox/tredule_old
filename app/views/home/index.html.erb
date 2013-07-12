@@ -35,14 +35,14 @@
           <% end %>
         </div><!-- end of #doctor-signup -->
         <div id="user-sign-in">
+          <!-- ***************** -->
           <h2>Sign-in</h2>
-          <%= form_for session_index_path, :html => {:class => 'form-horizontal' } do |f| %>
-            <%= f.text_field :email, label %>
-            <!-- TODO: Finish session creation then go about adding doctors to patients -->
-            <%= f.password_field :password %>
-          <%= f.button 'Sign-in' %>
-          <%= %>
+          <%= simple_form_for :sessions, url: session_index_path, method: 'POST' do |f| %>
+              <%= f.input :email %>
+              <%= f.input :password %>
+            <%= f.button :submit, 'Sign-in', class:"btn btn-custom-lighten" %>
           <% end %>
+          <!-- *************** -->
         </div>
       </div><!-- #row-fluid -->
     </div><!-- end of #central-signup -->
