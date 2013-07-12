@@ -1,0 +1,24 @@
+<div id="banner">
+  <div class="hero-unit text-center">
+    <div id="banner-copy">
+      <div id="title">
+        <h1>Tredule</h1>
+      </div>
+      <div id="tagline">
+        <h3>Manage your treatment with the help of those who care</h3>
+      </div>
+      <div id="product-description">
+        Tredule will help you and those who care about you make sure that you never miss a beat when it comes to your treatment
+      </div>
+    </div><!-- end of #banner-copy -->
+    <div id="central-login">
+      <%= simple_form_for(@patient,:url => patient_index_path, :method => :post, :html => {:class => 'form-horizontal' }) do |f| %>
+        <%= f.input :username %>
+        <%= f.input :email %>
+        <%= f.input :phone %>
+        <%= f.input :password %>
+      <%= f.button :submit, label: 'Sign-Up!' %>
+      <% end %>
+    </div><!-- end of #central-login -->
+  </div>
+</div>
