@@ -1,9 +1,11 @@
 Railsplate::Application.routes.draw do
   root to: 'home#index'
 
-  resources :patient
-  resources :doctor
-  resources :session
+  resources :patients
+  resources :doctors
+  resources :sessions
+
+  # post '/session' => 'sessions#create'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -8,8 +8,8 @@ describe 'as an authenticated user' do
 		visit root_path
 		within(:css, 'div#user-sign-in'){
 			expect(page).to have_content("Sign-in")
-			fill_in '_session_email', :with => @patient.email
-			fill_in '_session_password', :with => @patient.password
+			fill_in 'sessions_email', :with => @patient.email
+			fill_in 'sessions_password', :with => @patient.password
 			click_button 'Sign-in'
 		}
 		expect(page).to have_content("Account:<%= @patient.username %>")

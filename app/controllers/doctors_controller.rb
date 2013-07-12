@@ -1,6 +1,7 @@
 class DoctorController < ApplicationController
 	def show
 	end
+
 	def create
 		doctor = Doctor.new(params[:doctor])
 		if doctor.save
