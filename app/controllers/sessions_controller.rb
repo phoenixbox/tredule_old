@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = login(params[:email], params[:password])
-    binding.pry
+    user = login( params[:sessions][:email],
+                  params[:sessions][:password])
     # TODO: check session
     # TODO: check user type so redirect to right place
     if user

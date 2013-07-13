@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe 'as a public doctor' do
 	context 'when I visit the homepage' do
+		before(:each) do
+			@doctor = FactoryGirl.create(:doctor)
+		end
 		it 'I see the sign-up form' do
 			visit root_path
 			expect(page).to have_css('input#doctor_username')
@@ -19,9 +22,6 @@ describe 'as a public doctor' do
 		end
 
 		# let(:doctor){FactoryGirl.create(:doctor)}
-		before(:each) do
-			@doctor = FactoryGirl.create(:doctor)
-		end
 
 		it 'I can login' do
 			visit	root_path
