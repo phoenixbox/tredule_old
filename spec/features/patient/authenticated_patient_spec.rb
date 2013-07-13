@@ -13,6 +13,6 @@ describe 'as an authenticated user' do
 			fill_in 'sessions_password', :with => 'password'
 			click_button 'Sign-in'
 		}
-		expect(page).to have_content("Account:<%= @patient.username %>")
+		expect(page).to have_content "Account:"
 	end
 end
