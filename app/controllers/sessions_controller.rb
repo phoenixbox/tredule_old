@@ -3,19 +3,28 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = login( params[:sessions][:email],
-                  params[:sessions][:password])
-    # TODO: check session
-    # TODO: check user type so redirect to right place
-    if user
-      redirect_to patient_path(user), notice: "Successfully logged in!"
+    doctor = doctor(params)
+    patient = patient(params)
+    binding.pry
+    if doctor
+      redirect_to doctor_path(doctor) and return
+    elsif patient
+      redirect_to patient_path(patient) and return
     else
       redirect_to root_path, notice: "Log-in un-successful please retry"
     end
-    session[:id] = user.id
   end
 
-  # user = login(params[:sessions][:email],
-  #                params[:sessions][:password],
-  #                params[:sessions][:remember_me])
+  def doctor(params)
+    Doctor.where(email: params[:sessions][:email]).first
+  end
+
+  def patient(params)
+    Patient.where(email: params[:sessions][:email]).first
+  end
+
+  def destroy
+    logout
+    redirect_to root_url, :notice => "Logged out!"
+  end
 end

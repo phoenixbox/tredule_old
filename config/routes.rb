@@ -5,6 +5,8 @@ Railsplate::Application.routes.draw do
   resources :doctors
   resources :sessions
 
+  get "logout" => "sessions#destroy", :as => "logout"
+
   # post '/session' => 'sessions#create'
   # The priority is based upon order of creation:
   # first created -> highest priority.
