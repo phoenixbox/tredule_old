@@ -5,6 +5,7 @@ Railsplate::Application.routes.draw do
   resources :patients
   namespace :patients do
     get ":id/doctors" => "doctors#index", as: :doctors
+    post ":id/doctors" => "doctors#invite_doctor", as: :invite_doctor
     get ":id/carers" => "carers#index", as: :carers
   end
 
