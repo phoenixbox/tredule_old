@@ -1,12 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  # def current_user
-  # 	if Doctor.find(session[:doctor_id])
-  # 		doctor
-  # 	else
-  # 		Patient.find(session[:patient_id])
-  # 	end
-  # end
+
+ helper_method  :current_doctor,
+                :current_patient
+
+  def current_doctor
+    @current_user ||= Doctor.find(session[:doctor_id]) if session[:doctor_id]
+  end
+
+  def current_patient
+    @current_user ||= Patient.find(session[:patient_id]) if session[:patient_id]
+  end
 
   def doctor(params)
     Doctor.where(email: params[:sessions][:email]).first

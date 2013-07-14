@@ -47,12 +47,17 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#">Tredule</a>
-        </div>
-        <div class="user_nav">
-          <% if current_user %>
-            Logged in as <%= current_user.username %>.
-            <%= link_to "Log out", logout_path %>
-          <% end %>
+          <div class="user_nav pull-right">
+            <!-- <a href="">Logout</a> -->
+            <% if current_doctor %>
+              <p>Logged in as: <%= current_user.username %>
+              <%= link_to "Logout", logout_doctor_path %>
+            <% end %>
+            <% if current_patient %>
+              <p>Logged in as: <%= current_user.username %>
+              <%= link_to "Logout", logout_patient_path %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

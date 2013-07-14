@@ -6,7 +6,6 @@ class PatientsController < ApplicationController
 	def create
 		patient = Patient.new(params[:patient])
 		if patient.save
-			binding.pry
 			auto_login(patient)
 			redirect_to patient_path(patient), notice: "Successfully signed in"
 		else

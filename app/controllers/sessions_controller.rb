@@ -16,8 +16,13 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
-    logout
+  def destroy_doctor
+    session[:doctor_id] = nil
+    redirect_to root_url, :notice => "Logged out!"
+  end
+
+  def destroy_patient
+    session[:patient_id] = nil
     redirect_to root_url, :notice => "Logged out!"
   end
 end
