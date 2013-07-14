@@ -21,13 +21,14 @@ describe 'as an authenticated patient' do
 		visit patient_path(@patient)
 		click_link 'My Doctors'
 		expect(page).to have_content 'My Doctors'
-		expect(page).to have_content 'Invite a Doctor'
 		click_link 'Invite a Doctor'
+		visit patients_doctors_path(@patient)
+		expect(page).to have_content 'Email:'
 		within(:css, 'div#invite-doctor-email'){
 			fill_in 'doctor-email', :with => 'rogerssh@tcd.ie'
 			click_button 'Invite'
 		}
-		expect(page).to have_field('Invite sent!')
+		expect(page).to have_content('Invite sent!')
 	end
 
 	it 'I can invite someone to be my carer' do
