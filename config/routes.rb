@@ -1,7 +1,13 @@
 Railsplate::Application.routes.draw do
   root to: 'home#index'
 
+
   resources :patients
+  namespace :patients do
+    # resources :doctors, only: [:index]
+    get ":id/doctors" => "doctors#index", as: :doctors
+  end
+
   resources :doctors
   resources :sessions
 
