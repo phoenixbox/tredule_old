@@ -15,6 +15,7 @@ gem 'redis', "~> 3.0.3"
 gem 'sqlite3'
 gem 'sorcery'
 gem 'launchy'
+gem 'figaro'
 
 gem 'simple_form'
 
@@ -30,6 +31,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem "letter_opener"
   gem 'guard-rspec'
   gem 'cane'
   gem 'capybara'

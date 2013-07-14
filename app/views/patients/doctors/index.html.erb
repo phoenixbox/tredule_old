@@ -2,6 +2,7 @@
 <a href="/">Invite a Doctor</a>
 <div id="invite-doctor-email">
 	<form name="input" action='/patients/<%=@patient.id%>/doctors' method="post" >
+		Doctor Name: <input type="text" name="doctor-username"></br>
 		Email: <input type="text" name="doctor-email"></br>
 		<input type="submit" value="Invite">
 	</form><!-- form#invite-doctor-email -->
