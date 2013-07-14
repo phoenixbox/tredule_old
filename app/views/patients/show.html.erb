@@ -1,2 +1,3 @@
-<h1>Account: <%= @patient.username %></h1>
-<%= link_to 'My Doctors', patients_doctors_path(@patient) %>
+<h1>Account: <%= @patient.username.capitalize %></h1>
+<%= link_to 'My Doctors', patients_doctors_path(@patient) %></br>
+<%= link_to 'My Carers', patients_carers_path(@patient) %>

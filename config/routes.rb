@@ -4,11 +4,15 @@ Railsplate::Application.routes.draw do
 
   resources :patients
   namespace :patients do
-    # resources :doctors, only: [:index]
     get ":id/doctors" => "doctors#index", as: :doctors
+    get ":id/carers" => "carers#index", as: :carers
   end
 
   resources :doctors
+  namespace :doctors do
+    get ":id/patients" => "patients#index", as: :patients
+  end
+
   resources :sessions
 
   get "logout" => "sessions#destroy_doctor", :as => "logout_doctor"
