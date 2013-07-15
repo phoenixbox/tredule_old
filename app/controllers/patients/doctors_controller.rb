@@ -14,4 +14,8 @@ class Patients::DoctorsController < ApplicationController
 		# TODO 4: Doctor should then be listed in my doctors
 		redirect_to :back, notice: 'Invite sent!'
 	end
+
+	def create
+		binding.pry
+	end
 end

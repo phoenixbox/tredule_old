@@ -3,5 +3,6 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Seeding Database"
+patient = Patient.create(username: 'shane', email:'rogerssh@tcd.ie', phone:"1234567", password: 'password')
+doctor = Doctor.create(username: 'doctor', email: 'doctor@doctor.com', phone: '09876543', medical_school: 'harvard', practice: 'Delaware St, Denver, Co', speciality: 'Surgeon', password: 'password')

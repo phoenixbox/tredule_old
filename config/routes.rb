@@ -4,12 +4,18 @@ Railsplate::Application.routes.draw do
 
   resources :patients
   namespace :patients do
+    # resources :doctors, :only => [:create]
+    get ":id/doctor-signup/:email" => "invites#new", as: :new_doctor
+    post ":id/doctor-signup/" => "invites#create", as: :create_doctor
+    get ":id/doctor-signin/" => "invites#existing", as: :existing_doctor
     get ":id/doctors" => "doctors#index", as: :doctors
     post ":id/doctors" => "doctors#invite_doctor", as: :invite_doctor
     get ":id/carers" => "carers#index", as: :carers
   end
 
-  resources :doctors
+  resources :doctors do
+  end
+
   namespace :doctors do
     get ":id/patients" => "patients#index", as: :patients
   end

@@ -1,0 +1,52 @@
+<div id='doctor-signup'>
+  <h2>New Doctor Form</h2>
+  <form name="input" action='/patients/<%=@patient.id%>/doctor-signup' method="post" >
+  <h3>Your Patient's Details</h3>
+  <p>
+   <label for="login">Patient Name</label>
+   <input name="patient-name" type="text" id="login" readonly value='<%= @patient.username %>' style="border:none;">
+  </p>
+  <p>
+   <label for="login">Patient Email</label>
+   <input name="login" type="text" id="login" readonly value='<%= @patient.email %>' style="border:none;">
+  </p>
+  <h3>Your Details</h3>
+  <p>
+   <label for="username">Username</label>
+   <input type="text" name="username" id="username" placeholder="Your Tredule Username">
+  </p>
+  <p>
+   <label for="email">Email</label>
+   <input type="text" name="email" id="email" placeholder="example@example.com">
+  </p>
+  <p>
+   <label for="phone">Phone</label>
+   <input type="text" name="phone" id="phone" placeholder="(XXX)-XXX-XXXX">
+  </p>
+  <p>
+    <label for="speciality">Speciality:</label>
+    <select name='speciality'>
+      <optgroup label="Family">
+         <option>General Practioner</option>
+      </optgroup>
+      <optgroup label="Adult">
+         <option>Surgeon</option>
+      </optgroup>
+      <optgroup label="Childrens">
+         <option>Pediatrics</option>
+      </optgroup>
+      <optgroup label="Sport">
+         <option>Physiotherapy</option>
+         <option>Orthopedics</option>
+      </optgroup>
+    </select>
+  </p>
+  <p>
+    <label for="password">Password</label>
+    <input name="password" type="text" id="password" >
+  </p>
+  <p>
+    <input type="submit" value="Sign-Up!">
+  </p>
+  </form>
+</div>

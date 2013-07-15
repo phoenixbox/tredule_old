@@ -1,0 +1,12 @@
+<div id='doctor-signup'>
+  <h2>Doctors</h2>
+  <%= simple_form_for(@doctor, :url => patients_create_doctor, :method => :post, :html => {:class => 'form-horizontal' }) do |f| %>
+    <%= f.input :username %>
+    <%= f.input :email %>
+    <%= f.input :phone %>
+    <%= f.input :speciality, :as => :grouped_select, :collection => [['Family', ['General Practioner']],['Adult', ['Surgeon']], ['Childrens', ['Pediatrics']], ['Sport', ['Physiotherapy', 'Orthopedics']]], :group_method => :last %>
+    <%= f.input :password %>
+    <%= f.hidden_field :title, value: @patient_id %>
+  <%= f.button :submit, 'Create Account' %>
+  <% end %>
+</div><!-- end of #doctor-signup -->
