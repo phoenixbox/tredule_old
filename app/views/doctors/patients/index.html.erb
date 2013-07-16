@@ -1,2 +1,7 @@
 <h1>My Patients</h1>
-<a href="/">Invite a Patient</a>
+<ul>
+<% @doctors_patients.each do |patient| %>
+		<li> <%= link_to patient.username.capitalize, doctors_patient_path(patient)	%></li>
+<% end %>
+</ul>
+<h3><a href="/">Invite a Patient</a></h3>

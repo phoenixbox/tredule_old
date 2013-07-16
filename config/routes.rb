@@ -17,6 +17,7 @@ Railsplate::Application.routes.draw do
   end
 
   namespace :doctors do
+    resources :patients, only: [:show]
     get ":id/patients" => "patients#index", as: :patients
   end
 
