@@ -1,5 +1,11 @@
 <h1>My Doctors</h1>
-<a href="/">Invite a Doctor</a>
+<ul>
+<% @patients_doctors.each do |doctor| %>
+		<li> <%= link_to doctor.username.capitalize, patients_doctor_path(@patient,doctor)	%></li>
+<% end %>
+</ul>
+
+<h3>Invite a Doctor</h3>
 <div id="invite-doctor-email">
 	<form name="input" action='/patients/<%=@patient.id%>/doctors' method="post" >
 		Doctor Name: <input type="text" name="doctor-username"></br>

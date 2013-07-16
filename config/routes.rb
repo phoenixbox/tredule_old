@@ -8,8 +8,11 @@ Railsplate::Application.routes.draw do
     get ":id/doctor-signup/:email" => "invites#new", as: :new_doctor
     post ":id/doctor-signup/" => "invites#create", as: :create_doctor
     get ":id/doctor-signin/" => "invites#existing", as: :existing_doctor
+
+    get ":id/doctor/:id" => "doctors#show", as: :doctor
     get ":id/doctors" => "doctors#index", as: :doctors
     post ":id/doctors" => "doctors#invite_doctor", as: :invite_doctor
+
     get ":id/carers" => "carers#index", as: :carers
   end
 
@@ -17,7 +20,7 @@ Railsplate::Application.routes.draw do
   end
 
   namespace :doctors do
-    resources :patients, only: [:show]
+    get ":id/patient/:id" => "patients#show", as: :patient
     get ":id/patients" => "patients#index", as: :patients
   end
 
