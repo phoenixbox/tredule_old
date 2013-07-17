@@ -17,7 +17,7 @@ describe 'as a member doctor' do
 		expect(page).to have_content "Dr.Account:"
 	end
 
-	it 'I can invite a patient to be my doctor' do
+	it 'I can invite a client to be my patient' do
 		visit doctor_path(@doctor)
 		click_link 'My Patients'
 		expect(page).to have_content 'My Patients'

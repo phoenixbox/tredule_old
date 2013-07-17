@@ -1,7 +1,6 @@
 Railsplate::Application.routes.draw do
   root to: 'home#index'
 
-
   resources :patients
   namespace :patients do
     # resources :doctors, :only => [:create]
@@ -19,13 +18,14 @@ Railsplate::Application.routes.draw do
   resources :doctors do
   end
   namespace :doctors do
+    post ":id/patient-signup/" => "invites#create", as: :create_patient
+    get ":id/patient-signup/:email" => "invites#new", as: :new_patient
     post ":id/patients" => "patients#invite_patient", as: :invite_patient
     get ":id/patient/:id" => "patients#show", as: :patient
     get ":id/patients" => "patients#index", as: :patients
   end
 
   resources :sessions
-
   get "logout" => "sessions#destroy_doctor", :as => "logout_doctor"
   get "logout" => "sessions#destroy_patient", :as => "logout_patient"
 

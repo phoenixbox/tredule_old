@@ -1,0 +1,36 @@
+<div id='patient-signup'>
+  <h2>New Patient Form</h2>
+  <p>You have been invited by <%= @doctor.username.capitalize %> to be their patient</p>
+  <form name="input" action='/doctors/<%=@doctor.id%>/patient-signup' method="post" >
+
+  <h3>Your Doctor's Details</h3>
+  <p>
+   <label for="doctor-name">Doctor Name</label>
+   <input name="doctor-name" type="text" id="login" readonly value='<%= @doctor.username %>' style="border:none;">
+  </p>
+  <p>
+   <label for="doctor-email">Doctor Email</label>
+   <input name="doctor-email" type="text" id="login" readonly value='<%= @doctor.email %>' style="border:none;">
+  </p>
+  <h3>Your Details</h3>
+  <p>
+   <label for="username">Username</label>
+   <input type="text" name="username" id="username" placeholder="Your Tredule Username">
+  </p>
+  <p>
+   <label for="email">Email</label>
+   <input type="text" name="email" id="email" placeholder="example@example.com">
+  </p>
+  <p>
+   <label for="phone">Phone</label>
+   <input type="text" name="phone" id="phone" placeholder="(XXX)-XXX-XXXX">
+  </p>
+  <p>
+    <label for="password">Password</label>
+    <input name="password" type="text" id="password" >
+  </p>
+  <p>
+    <input type="submit" value="Sign-Up!">
+  </p>
+  </form>
+</div>

@@ -3,12 +3,12 @@
   <form name="input" action='/patients/<%=@patient.id%>/doctor-signup' method="post" >
   <h3>Your Patient's Details</h3>
   <p>
-   <label for="login">Patient Name</label>
+   <label for="patient-name">Patient Name</label>
    <input name="patient-name" type="text" id="login" readonly value='<%= @patient.username %>' style="border:none;">
   </p>
   <p>
-   <label for="login">Patient Email</label>
-   <input name="login" type="text" id="login" readonly value='<%= @patient.email %>' style="border:none;">
+   <label for="patient-email">Patient Email</label>
+   <input name="patient-email" type="text" id="login" readonly value='<%= @patient.email %>' style="border:none;">
   </p>
   <h3>Your Details</h3>
   <p>

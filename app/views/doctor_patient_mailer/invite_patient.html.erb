@@ -1,0 +1,16 @@
+<h1>Invite to Tredule!</h1>
+<h3>Collaborate with your doctors and carers on your wellbeing.</h3>
+<h5>Dear, <%= @patient[:username].capitalize %></h5>
+
+<p>At Tredule we believe that healthcare treatments are more effective when collaborative.</p></br>
+
+<p><b>Dr: <%= @doctor.username.capitalize %></b> would like to invite you to be their patient on Tredule. This will allow you to collaborate on your healthcare treatment by creating notifications for your treatment schedule ensuring that you and your doctor never miss a beat when it comes to your healthcare.</p></br>
+
+<p>Together you can experience a more efficient and helpful treatment process, leading to happier, healthier you.</p></br>
+
+<p>Follow this link to sign-up to Tredule and accept the invitation to be <b>Dr: <%= @doctor.username.capitalize %></b>'s patient</p>
+
+<%= link_to "Sign-up", doctors_new_patient_url(@doctor.id, @patient[:email]) %>
+
+<p>Already a Tredule certified doctor? Follow this link to sign-in to Tredule, and accept the invitation to be <b><%= @doctor.username.capitalize %></b>'s doctor</p>
+<%#= link_to "Sign-in", "/" %>
