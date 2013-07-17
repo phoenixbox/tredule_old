@@ -4,5 +4,12 @@
 		<li> <%= link_to patient.username.capitalize, doctors_patient_path(@doctor,patient)	%></li>
 <% end %>
 </ul>
-<h3><a href="/">Invite a Patient</a></h3>
+<h3>Invite a Patient</h3>
+<div id="invite-patient-email">
+	<form name="input" action='/doctors/<%=@doctor.id%>/patients' method="post" >
+		Patient Name: <input type="text" name="patient-username"></br>
+		Email: <input type="text" name="patient-email"></br>
+		<input type="submit" value="Invite">
+	</form><!-- form#invite-doctor-email -->
+</div>
 

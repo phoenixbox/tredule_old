@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'as an authenticated patient' do
+describe 'as a member doctor' do
 	before(:each) do
 		@doctor = FactoryGirl.create(:doctor)
 		@patient = FactoryGirl.create(:patient)
@@ -17,13 +17,17 @@ describe 'as an authenticated patient' do
 		expect(page).to have_content "Dr.Account:"
 	end
 
-	it 'I can invite a doctor to be my doctor' do
+	it 'I can invite a patient to be my doctor' do
 		visit doctor_path(@doctor)
 		click_link 'My Patients'
 		expect(page).to have_content 'My Patients'
 		expect(page).to have_content 'Invite a Patient'
-		click_link 'Invite a Patient'
-		expect(page).to have_field('Email')
+		within(:css, 'div#invite-patient-email'){
+			fill_in 'patient-username', :with => 'shane'
+			fill_in 'patient-email', :with => 'rogerssh@tcd.ie'
+			click_button 'Invite'
+		}
+		expect(page).to have_content 'Follow this link to sign-up'
 	end
 end
 # save_and_open_page

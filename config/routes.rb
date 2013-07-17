@@ -18,8 +18,8 @@ Railsplate::Application.routes.draw do
 
   resources :doctors do
   end
-
   namespace :doctors do
+    post ":id/patients" => "patients#invite_patient", as: :invite_patient
     get ":id/patient/:id" => "patients#show", as: :patient
     get ":id/patients" => "patients#index", as: :patients
   end
