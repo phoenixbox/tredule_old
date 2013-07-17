@@ -26,7 +26,7 @@ describe 'as an authenticated patient' do
 			fill_in 'doctor-email', :with => 'rogerssh@tcd.ie'
 			click_button 'Invite'
 		}
-		expect(page).to have_button 'Invite'
+		expect(page).to have_content 'Follow this link to sign-up'
 	end
 
 	xit 'I can invite someone to be my carer' do
