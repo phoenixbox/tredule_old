@@ -16,9 +16,7 @@ describe 'as an invited client to tredule by a member doctor' do
 			click_button 'Sign-Up!'
 		}
 		expect(page).to have_content "Shane"
-		# expect(page).to have_content 'My Doctors'
-		# save_and_open_page
 		click_link 'My Doctors'
-		expect(page).to have_content "Dr: #{doctor.username}"
+		expect(page).to have_content "#{doctor.username.capitalize}"
 	end
 end

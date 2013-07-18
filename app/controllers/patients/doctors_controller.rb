@@ -5,7 +5,6 @@ class Patients::DoctorsController < ApplicationController
 	end
 
 	def show
-		binding.pry
 		@patient_doctor = Doctor.find(params[:id])
 	end
 
