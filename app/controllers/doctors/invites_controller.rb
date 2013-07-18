@@ -9,6 +9,7 @@ class Doctors::InvitesController < ApplicationController
 		patient = build_patient(params)
 		if patient.save
 			associate_patient_doctor(patient, doctor)
+			session[:doctor_id] = doctor.id
 			redirect_to patient_path(patient), notice: "Account Created!"
 		else
 			redirect_to :back, notice: "Account not created, please try again!"

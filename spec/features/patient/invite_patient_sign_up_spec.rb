@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'as an invited client to tredule by a member doctor' do
+describe 'as an invited client to Tredule by a member doctor' do
 	let(:doctor) {FactoryGirl.create(:doctor)}
 	let(:patient) {FactoryGirl.build(:patient)}
 
@@ -18,5 +18,6 @@ describe 'as an invited client to tredule by a member doctor' do
 		expect(page).to have_content "Shane"
 		click_link 'My Doctors'
 		expect(page).to have_content "#{doctor.username.capitalize}"
+		expect(page).to have_content "Logged in as:"
 	end
 end
