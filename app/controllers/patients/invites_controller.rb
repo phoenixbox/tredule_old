@@ -9,6 +9,7 @@ class Patients::InvitesController < ApplicationController
 		doctor = build_doctor(params)
 		if doctor.save
 			associate_doctor_patient(doctor, patient)
+			session[:doctor_id] = doctor.id
 			redirect_to doctor_path(doctor), notice: "Account Created!"
 		else
 			redirect_to :back, notice: "Account not created, please try again!"
@@ -34,7 +35,7 @@ class Patients::InvitesController < ApplicationController
 	def existing
 		@patient = Patient.find(params[:id])
 	end
-
+	# TODO: implement session setting after association for new account creations
 	def session_and_associate
 		patient = Patient.find(params[:id])
 		doctor = Doctor.where(email: params[:email]).first

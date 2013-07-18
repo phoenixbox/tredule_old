@@ -21,5 +21,6 @@ describe 'as a public doctor invited by a patient to signup' do
 		expect(page).to have_content "frank"
 		click_link 'My Patients'
 		expect(page).to have_content "Shane"
+		expect(page).to have_content "Logged in as:"
 	end
 end
