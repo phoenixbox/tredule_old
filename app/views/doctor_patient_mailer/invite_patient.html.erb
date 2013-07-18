@@ -13,4 +13,5 @@
 <%= link_to "Sign-up", doctors_new_patient_url(@doctor.id, @patient[:email]) %>
 
 <p>Already a Tredule certified doctor? Follow this link to sign-in to Tredule, and accept the invitation to be <b><%= @doctor.username.capitalize %></b>'s doctor</p>
-<%#= link_to "Sign-in", "/" %>
+<!-- TODO: Change this to the require route -->
+<%= link_to "Sign-in", doctors_existing_patient(@doctor.id, @patient[:email]) %>

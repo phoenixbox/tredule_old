@@ -1,9 +1,21 @@
 require 'spec_helper'
 
-describe 'as a member doctor of Tredule' do
-	xit 'I can sign-in from an email sign-up link' do
-	end
+feature 'Patient has invited their doctor, whom is already a member, to Tredule' do
+	describe 'I am a member doctor' do
+		let(:patient){FactoryGirl.create(:patient)}
+		let(:doctor){FactoryGirl.create(:doctor)}
 
-	xit 'I can then see the related patient in my patients list' do
+		it 'I can sign in through the email invite' do
+			visit patients_existing_doctor_path(patient.id, 'example@example.com')
+			expect(page).to have_content("When you sign in you will connect to your patient #{patient.username.capitalize}")
+			expect(page).to have_selector('div#doctor-signin')
+			expect(page).to have_content('Patient Name')
+			within(:css, 'form#signin'){
+				fill_in 'email', with: doctor.email
+				fill_in 'password', with: 'password'
+				click_button 'Sign-in!'
+			}
+			expect(page).to have_content(patient.username.capitalize)
+		end
 	end
 end

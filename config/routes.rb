@@ -20,6 +20,9 @@ Railsplate::Application.routes.draw do
   resources :doctors do
   end
   namespace :doctors do
+    get ":id/patient-signin/:email" => "invites#existing", as: :existing_patient
+    post ":id/session" => "invites#session_and_associate", as: :patient_session
+
     post ":id/patient-signup/" => "invites#create", as: :create_patient
     get ":id/patient-signup/:email" => "invites#new", as: :new_patient
     post ":id/patients" => "patients#invite_patient", as: :invite_patient
