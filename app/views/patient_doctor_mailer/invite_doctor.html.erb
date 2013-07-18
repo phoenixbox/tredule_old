@@ -10,4 +10,4 @@
 <%= link_to "Sign-up", patients_new_doctor_url(@patient.id, @doctor[:email]) %>
 
 <p>Already a Tredule certified doctor? Follow this link to sign-in to Tredule, and accept the invitation to be <b><%= @patient.username.capitalize %></b>'s doctor</p>
-<%= link_to "Sign-in", "/" %>
+<%= link_to "Sign-in", patients_existing_doctor_url(@patient.id, @doctor[:email]) %>

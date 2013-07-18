@@ -6,7 +6,9 @@ Railsplate::Application.routes.draw do
     # resources :doctors, :only => [:create]
     get ":id/doctor-signup/:email" => "invites#new", as: :new_doctor
     post ":id/doctor-signup/" => "invites#create", as: :create_doctor
-    get ":id/doctor-signin/" => "invites#existing", as: :existing_doctor
+    get ":id/doctor-signin/:email" => "invites#existing", as: :existing_doctor
+    post ":id/session" => "invites#session_and_associate", as: :doctor_session
+    get ":id/doctor-signin/" => "invites#signin", as: :signin
 
     get ":id/doctor/:id" => "doctors#show", as: :doctor
     get ":id/doctors" => "doctors#index", as: :doctors

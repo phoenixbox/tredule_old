@@ -30,4 +30,19 @@ class Patients::InvitesController < ApplicationController
 	def associate_doctor_patient(doctor, patient)
 		Healthcare.create(doctor_id: doctor.id,patient_id: patient.id)
 	end
+
+	def existing
+		@patient = Patient.find(params[:id])
+	end
+
+	def session_and_associate
+		patient = Patient.find(params[:id])
+		doctor = Doctor.where(email: params[:email]).first
+		if associate_doctor_patient(doctor, patient)
+			session[:doctor_id] = doctor.id
+			redirect_to doctors_patient_path(doctor, patient), notice: 'Logged in and association made!'
+		else
+			redirect_to :back, notice: 'Your details may have been entered incorrectly, please try again'
+		end
+	end
 end

@@ -1,0 +1,27 @@
+<p>When you sign in you will connect to your patient <%= @patient.username.capitalize %></p>
+<div id="doctor-signin">
+	<h2>Doctor Sign-In</h2>
+	<form name="input" action='/patients/<%=@patient.id%>/session' method="post" id='signin'>
+		<h3>Your Patient's Details</h3>
+		<p>
+		 <label for="patient-name">Patient Name</label>
+		 <input name="patient-name" type="text" id="login" readonly value='<%= @patient.username.capitalize %>' style="border:none;">
+		</p>
+		<p>
+		 <label for="patient-email">Patient Email</label>
+		 <input name="patient-email" type="text" id="login" readonly value='<%= @patient.email %>' style="border:none;">
+		</p>
+		<h3>Sign-in</h3>
+		<p>
+		 <label for="email">Email</label>
+		 <input type="text" name="email" id="email">
+		</p>
+		<p>
+		 <label for="password">Password</label>
+		 <input type="text" name="password" id="password">
+		</p>
+		<p>
+		  <input type="submit" value="Sign-in!">
+		</p>
+	</form>
+</div>
