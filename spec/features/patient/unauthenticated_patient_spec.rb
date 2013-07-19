@@ -13,7 +13,6 @@ describe 'as a public patient' do
 			fill_in 'patient_email', :with => 'example@example.com'
 			fill_in 'patient_phone', :with => '9179127862'
 			fill_in 'patient_password', :with => 'password'
-			# fill_in 'patient_password_confirmation', :with => 'password'
 			click_button 'Sign-Up!'
 			expect(page).to have_content "Account:"
 		end

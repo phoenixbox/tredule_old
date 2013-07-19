@@ -1,2 +1,24 @@
 <h1>My Carers</h1>
-<a href="/">Invite a Carer</a>
+<h3>Invite a Carer</h3>
+<div id="invite-patient-email">
+	<form name="input" action='/' method="post" >
+		<p>
+			<label for="carer-username">Carer Name:</label>
+			<input type="text" name="carer-username">
+		</p>
+		<p>
+			<label for="relationship">Relationship:</label>
+	    <select name='relationship'>
+         <option>Family</option>
+         <option>Friend</option>
+	    </select>
+		</p>
+		<p>
+		<label for="carer-email">Email:</label>
+		<input type="text" name="carer-email">
+		</p>
+		<p>
+			<input type="submit" value="Invite">
+		</p>
+	</form><!-- form#invite-doctor-email -->
+</div>
