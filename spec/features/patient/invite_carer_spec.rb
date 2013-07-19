@@ -21,11 +21,11 @@ feature 'As a patient member of Tredule I can invite a carer' do
 			expect(page).to have_selector('div#invite-patient-email')
 			within(:css, 'div#invite-patient-email'){
 				fill_in 'carer-username', :with => 'Shane'
-				select 'Family', from: 'relationship'
+				select 'Family', from: 'carer-relationship'
 				fill_in 'carer-email', :with => 'rogerssh@tcd.ie'
 				click_button 'Invite'
 			}
-			expect(page).to have_content('Invite Sent!')
+			expect(page).to have_content('leading to happier, healthier loved ones')
 		end
 	end
 end

@@ -1,0 +1,10 @@
+<h1>Invite to Tredule!</h1>
+<h3>help anage the effective aftercare treatment of your loved ones</h3>
+<h5>Dear, <%= @carer['carer-username'] %></h5>
+
+<p>As someone who cares for <%= @patient.username.capitalize %>, Tredule will help you assist with their aftercare. You can help make sure they never miss a beat when it comes to their treatment.</p></br>
+
+<p><b><%= @patient.username.capitalize %></b> would like to invite you to be their carer on Tredule. This means that when <%= @patient.username.capitalize %> misses a scheduled treatment, you can be notified so that you may provide a caring reminder. Together you can make the treatment process more efficient and helpful, leading to happier, healthier loved ones.</p></br>
+<p>Follow this link to sign-up to Tredule and accept the invitation to be <b><%= @patient.username.capitalize %></b>'s carer.</p>
+
+<%= link_to "Sign-up", patients_new_carer_url(@patient.id, @carer['carer-email']) %>

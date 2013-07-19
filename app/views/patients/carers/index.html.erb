@@ -1,14 +1,14 @@
 <h1>My Carers</h1>
 <h3>Invite a Carer</h3>
 <div id="invite-patient-email">
-	<form name="input" action='/' method="post" >
+	<form name="input" action='/patients/<%=@patient.id%>/carers' method="post" >
 		<p>
 			<label for="carer-username">Carer Name:</label>
 			<input type="text" name="carer-username">
 		</p>
 		<p>
-			<label for="relationship">Relationship:</label>
-	    <select name='relationship'>
+			<label for="carer-relationship">Relationship:</label>
+	    <select name='carer-relationship'>
          <option>Family</option>
          <option>Friend</option>
 	    </select>

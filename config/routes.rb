@@ -4,35 +4,57 @@ Railsplate::Application.routes.draw do
   resources :patients
   namespace :patients do
     # resources :doctors, :only => [:create]
-    get ":id/doctor-signup/:email" => "invites#new", as: :new_doctor
-    post ":id/doctor-signup/" => "invites#create", as: :create_doctor
-    get ":id/doctor-signin/:email" => "invites#existing", as: :existing_doctor
-    post ":id/session" => "invites#session_and_associate", as: :doctor_session
-    get ":id/doctor-signin/" => "invites#signin", as: :signin
+    get ":id/doctor-signup/:email"  => "invites#new",
+                                        as: :new_doctor
+    post ":id/doctor-signup/"       => "invites#create",
+                                        as: :create_doctor
+    get ":id/doctor-signin/:email"  => "invites#existing",
+                                        as: :existing_doctor
+    post ":id/session"              => "invites#session_and_associate",
+                                        as: :doctor_session
+    get ":id/doctor-signin/"        => "invites#signin",
+                                        as: :signin
 
-    get ":id/doctor/:id" => "doctors#show", as: :doctor
-    get ":id/doctors" => "doctors#index", as: :doctors
-    post ":id/doctors" => "doctors#invite_doctor", as: :invite_doctor
+    get ":id/doctor/:id"            => "doctors#show",
+                                        as: :doctor
+    get ":id/doctors"               => "doctors#index",
+                                        as: :doctors
+    post ":id/doctors"              => "doctors#invite_doctor",
+                                        as: :invite_doctor
 
-    get ":id/carers" => "carers#index", as: :carers
+    get ":id/carers"                => "carers#index",
+                                        as: :carers
+    post ":id/carers"               => "carers#invite_carer",
+                                        as: :invite_carer
+    get ":id/carer-signup/:email"   => "carers#new",
+                                        as: :new_carer
   end
 
   resources :doctors do
   end
   namespace :doctors do
-    get ":id/patient-signin/:email" => "invites#existing", as: :existing_patient
-    post ":id/session" => "invites#session_and_associate", as: :patient_session
+    get ":id/patient-signin/:email" => "invites#existing",
+                                        as: :existing_patient
+    post ":id/session"              => "invites#session_and_associate",
+                                        as: :patient_session
 
-    post ":id/patient-signup/" => "invites#create", as: :create_patient
-    get ":id/patient-signup/:email" => "invites#new", as: :new_patient
-    post ":id/patients" => "patients#invite_patient", as: :invite_patient
-    get ":id/patient/:id" => "patients#show", as: :patient
-    get ":id/patients" => "patients#index", as: :patients
+    post ":id/patient-signup/"      => "invites#create",
+                                        as: :create_patient
+    get ":id/patient-signup/:email" => "invites#new",
+                                        as: :new_patient
+    post ":id/patients"             => "patients#invite_patient",
+                                        as: :invite_patient
+    get ":id/patient/:id"           => "patients#show",
+                                        as: :patient
+    get ":id/patients"              => "patients#index",
+                                        as: :patients
   end
 
   resources :sessions
-  get "logout" => "sessions#destroy_doctor", :as => "logout_doctor"
-  get "logout" => "sessions#destroy_patient", :as => "logout_patient"
+  get "logout"                      => "sessions#destroy_doctor",
+                                        as: :logout_doctor
+  get "logout"                      => "sessions#destroy_patient",
+                                        as: :logout_patient
 
   # post '/session' => 'sessions#create'
   # The priority is based upon order of creation:

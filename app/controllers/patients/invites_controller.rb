@@ -35,7 +35,7 @@ class Patients::InvitesController < ApplicationController
 	def existing
 		@patient = Patient.find(params[:id])
 	end
-	# TODO: implement session setting after association for new account creations
+
 	def session_and_associate
 		patient = Patient.find(params[:id])
 		doctor = Doctor.where(email: params[:email]).first
