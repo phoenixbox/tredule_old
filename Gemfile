@@ -18,6 +18,7 @@ gem 'launchy'
 gem 'figaro'
 gem 'resque'
 gem 'capybara-email'
+gem 'guard'
 
 gem 'simple_form'
 
