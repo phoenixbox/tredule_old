@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715175956) do
+ActiveRecord::Schema.define(:version => 20130729171320) do
+
+  create_table "carers", :force => true do |t|
+    t.string  "username",         :null => false
+    t.string  "email"
+    t.string  "relationship"
+    t.string  "phone"
+    t.string  "crypted_password"
+    t.string  "salt"
+    t.integer "patient_id"
+  end
 
   create_table "doctors", :force => true do |t|
     t.string   "username",         :null => false
@@ -37,6 +47,18 @@ ActiveRecord::Schema.define(:version => 20130715175956) do
     t.string   "username",         :null => false
     t.string   "email"
     t.string   "phone"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "carer_id"
+  end
+
+  add_index "patients", ["carer_id"], :name => "index_patients_on_carer_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "username",         :null => false
+    t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at",       :null => false

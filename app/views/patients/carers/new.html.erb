@@ -1,3 +1,4 @@
+<!-- TODO: Jumping the gun to the accepting of the invite, need to backtrack to the original patient invites the carer part -->
 <div id='carer-signup'>
   <h2>New Carer Form</h2>
   <p>You have been invited by <%= @patient.username.capitalize %> to be their carer</p>
@@ -21,10 +22,11 @@
    <label for="email">Email</label>
    <input type="text" name="email" id="email" placeholder="example@example.com">
   </p>
-  <p>
-   <label for="relationship">Carer Relationship</label>
-   <input name="relationship" type="text" id="relationship" readonly value='<%= @carer.relationship %>' style="border:none;">
-  </p>
+    <label for="relationship">Relationship to <%= @patient.username.capitalize %>:</label>
+    <select name='relationship'>
+       <option>Family</option>
+       <option>Friend</option>
+    </select>
   <p>
    <label for="phone">Phone</label>
    <input type="text" name="phone" id="phone" placeholder="(XXX)-XXX-XXXX">

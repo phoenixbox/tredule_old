@@ -6,13 +6,12 @@ feature 'As a person who has received an email invite to be a carer' do
 
 		it 'and sign up to Tredule to be a patients carer and see this relationship' do
 			visit patients_new_carer_path(patient, 'carer@carer.com')
-			save_and_open_page
 			expect(page).to have_selector('div#carer-signup')
 			expect(page).to have_content('Patient Name')
 			within(:css, 'div#carer-signup'){
 				fill_in "username", :with => 'carer'
 				fill_in "email", :with => 'example@example.com'
-				select "Family", :from => 'carer-relationship'
+				select "Family", :from => 'relationship'
 				fill_in "phone", :with => '56748396'
 				fill_in "password", :with => 'password'
 				click_button 'Sign-Up!'
