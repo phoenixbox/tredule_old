@@ -1,0 +1,40 @@
+<div id='carer-signup'>
+  <h2>New Carer Form</h2>
+  <p>You have been invited by <%= @patient.username.capitalize %> to be their carer</p>
+  <form name="input" action='/patients/<%=@patient.id%>/carer-signup' method="post" >
+
+  <h3>Your Patient's Details</h3>
+  <p>
+   <label for="patient-name">Patient Name</label>
+   <input name="patient-name" type="text" id="login" readonly value='<%= @patient.username %>' style="border:none;">
+  </p>
+  <p>
+   <label for="patient-email">Patient Email</label>
+   <input name="patient-email" type="text" id="login" readonly value='<%= @patient.email %>' style="border:none;">
+  </p>
+  <h3>Your Details</h3>
+  <p>
+   <label for="username">Username</label>
+   <input type="text" name="username" id="username" placeholder="Your Tredule Username">
+  </p>
+  <p>
+   <label for="email">Email</label>
+   <input type="text" name="email" id="email" placeholder="example@example.com">
+  </p>
+  <p>
+   <label for="relationship">Carer Relationship</label>
+   <input name="relationship" type="text" id="relationship" readonly value='<%= @carer.relationship %>' style="border:none;">
+  </p>
+  <p>
+   <label for="phone">Phone</label>
+   <input type="text" name="phone" id="phone" placeholder="(XXX)-XXX-XXXX">
+  </p>
+  <p>
+    <label for="password">Password</label>
+    <input name="password" type="text" id="password" >
+  </p>
+  <p>
+    <input type="submit" value="Sign-Up!">
+  </p>
+  </form>
+</div>

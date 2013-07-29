@@ -3,22 +3,15 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 
 gem 'activerecord-postgres-hstore'
-gem 'better_errors'
-gem 'binding_of_caller'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'pg'
-gem 'pry'
-gem 'rake'
 gem 'redis', "~> 3.0.3"
 gem 'sqlite3'
 gem 'sorcery'
-gem 'launchy'
-gem 'figaro'
 gem 'resque'
 gem 'capybara-email'
-gem 'guard'
 
 gem 'simple_form'
 
@@ -26,6 +19,14 @@ gem 'simple_form'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
+
+# Testing & Debugging
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'guard'
+gem 'launchy'
+gem 'pry'
+gem 'rake'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -48,5 +49,3 @@ group :development, :test do
   gem 'selenium-webdriver', '2.31.0'
   gem 'simplecov'
 end
-
-
