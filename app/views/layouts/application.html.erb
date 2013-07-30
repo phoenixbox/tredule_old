@@ -48,7 +48,6 @@
           </a>
           <a class="brand" href="#">Tredule</a>
           <div class="user_nav pull-right">
-            <!-- <a href="">Logout</a> -->
             <% if current_doctor %>
               <p>Logged in as: <%= current_doctor.username.capitalize %></br>
               <%= link_to "Logout", logout_doctor_path %> |
@@ -58,6 +57,11 @@
               <p>Logged in as: <%= current_patient.username.capitalize %></br>
               <%= link_to "Logout", logout_patient_path %> |
               <%= link_to "My Profile", patient_path(current_patient) %>
+            <% end %>
+            <% if current_carer %>
+              <p>Logged in as: <%= current_carer.username.capitalize %></br>
+              <%= link_to "Logout", logout_carer_path %> |
+              <%= link_to "My Profile", carer_path(current_carer) %>
             <% end %>
           </div>
         </div>

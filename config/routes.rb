@@ -8,6 +8,8 @@ Railsplate::Application.routes.draw do
                                         as: :new_doctor
     post ":id/doctor-signup/"       => "invites#create",
                                         as: :create_doctor
+    post ":id/carer-signup/"        => "invites#create_carer",
+                                        as: :create_carer
     get ":id/doctor-signin/:email"  => "invites#existing",
                                         as: :existing_doctor
     post ":id/session"              => "invites#session_and_associate",
@@ -50,11 +52,22 @@ Railsplate::Application.routes.draw do
                                         as: :patients
   end
 
+  resources :carers, only: [:show]
+  namespace :carers do
+    # get ':id/patients/:id'            => 'patients#show',
+    #                                     as: :patient
+    # will this cause authorization errors??
+    resources :patients, only: [:show]
+
+  end
+
   resources :sessions
   get "logout"                      => "sessions#destroy_doctor",
                                         as: :logout_doctor
   get "logout"                      => "sessions#destroy_patient",
                                         as: :logout_patient
+  get "logout"                      => "sessions#destroy_carer",
+                                        as: :logout_carer
 
   # post '/session' => 'sessions#create'
   # The priority is based upon order of creation:

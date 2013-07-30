@@ -10,10 +10,46 @@ class Patients::InvitesController < ApplicationController
 		if doctor.save
 			associate_doctor_patient(doctor, patient)
 			session[:doctor_id] = doctor.id
-			redirect_to doctor_path(doctor), notice: "Account Created!"
+			redirect_to doctor_path(doctor), notice: account_success
 		else
-			redirect_to :back, notice: "Account not created, please try again!"
+			redirect_to :back, notice: account_error
 		end
+	end
+
+	def create_carer
+		patient = Patient.find(params[:id])
+		carer = build_carer(params, patient.id)
+		if carer.save
+			patient.update_attribute(:carer_id, carer.id)
+			login_carer(carer.id)
+			redirect_to carer_path(carer), notice: account_success
+		else
+			redirect_to :back, notice: account_error
+		end
+	end
+
+	def login_carer(carer_id)
+		session[:carer_id] = carer_id
+	end
+
+	def account_error
+		"Account not created, please try again!"
+	end
+
+	def account_success
+		"Account Created!"
+	end
+
+	def build_carer(params, patient_id)
+		# set the carer to patient association
+		Carer.new(
+			username: params[:username],
+			email: params[:email],
+			relationship: params[:relationship],
+			phone: params[:phone],
+			password: params[:password],
+			patient_id: patient_id
+			)
 	end
 
 	def build_doctor(params)
@@ -36,6 +72,7 @@ class Patients::InvitesController < ApplicationController
 		@patient = Patient.find(params[:id])
 	end
 
+	# Associate without new Patient/Doctor record creation
 	def session_and_associate
 		patient = Patient.find(params[:id])
 		doctor = Doctor.where(email: params[:email]).first
