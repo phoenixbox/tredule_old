@@ -15,6 +15,7 @@ describe 'as an invited client to Tredule by a member doctor' do
 			fill_in "password", :with => 'password'
 			click_button 'Sign-Up!'
 		}
+		expect(page).to have_content('Logout')
 		expect(page).to have_content "Shane"
 		click_link 'My Doctors'
 		expect(page).to have_content "#{doctor.username.capitalize}"

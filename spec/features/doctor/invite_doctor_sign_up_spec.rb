@@ -18,6 +18,7 @@ describe 'as a public doctor invited by a patient to signup' do
 			fill_in "password", :with => 'password'
 			click_button 'Sign-Up!'
 		}
+		expect(page).to have_content('Logout')
 		expect(page).to have_content "frank"
 		click_link 'My Patients'
 		expect(page).to have_content "Shane"

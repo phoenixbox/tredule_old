@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe 'as an authenticated patient' do
-	before(:each) do
-		@patient = FactoryGirl.create(:patient)
-		@doctor = FactoryGirl.create(:doctor)
-	end
+
+	let(:carer){FactoryGirl.create(:carer)}
+	let(:patient){FactoryGirl.create(:patient)}
+	let(:doctor){FactoryGirl.create(:doctor)}
 
 	it 'I can sign in' do
 		visit root_path
 		within(:css, 'div#user-sign-in'){
 			expect(page).to have_content("Sign-in")
-			fill_in 'sessions_email', :with => 'example@example.com'
+			fill_in 'sessions_email', :with => patient.email
 			fill_in 'sessions_password', :with => 'password'
 			click_button 'Sign-in'
 		}
@@ -18,7 +18,7 @@ describe 'as an authenticated patient' do
 	end
 
 	it 'I can invite a doctor to be my doctor' do
-		visit patient_path(@patient)
+		visit patient_path(patient)
 		click_link 'My Doctors'
 		expect(page).to have_content 'My Doctors'
 		expect(page).to have_content 'Email:'
@@ -29,13 +29,16 @@ describe 'as an authenticated patient' do
 		expect(page).to have_content 'Follow this link to sign-up'
 	end
 
-	xit 'I can invite someone to be my carer' do
-		visit patient_path(@patient)
+	it 'I can invite someone to be my carer' do
+		visit patient_path(patient)
 		click_link 'My Carers'
 		expect(page).to have_content 'My Carers'
 		expect(page).to have_content 'Invite a Carer'
-		click_link 'Invite a Carer'
-		expect(page).to have_field('Email')
+		expect(page).to have_selector('div#invite-carer')
+	end
+
+	it 'I can see a list of my carers' do
+		# TODO: Set the testing logic for viewing a carer of a patient when they are associated
 	end
 
 end

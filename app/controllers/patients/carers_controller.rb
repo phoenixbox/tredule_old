@@ -1,6 +1,8 @@
 class Patients::CarersController < ApplicationController
 	def index
 		@patient = Patient.find(params[:id])
+		# binding.pry
+		@patients_carers = Carer.where(patient_id: @patient.id)
 	end
 
 	def new
