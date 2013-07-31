@@ -20,7 +20,7 @@ class Patients::InvitesController < ApplicationController
 		patient = Patient.find(params[:id])
 		carer = build_carer(params, patient.id)
 		if carer.save
-			patient.update_attribute(:carer_id, carer.id)
+			patient.carers << carer
 			login_carer(carer.id)
 			redirect_to carer_path(carer), notice: account_success
 		else
