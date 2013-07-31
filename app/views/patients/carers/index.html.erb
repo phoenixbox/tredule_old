@@ -1,6 +1,11 @@
 <h3>My Carers</h3>
 <div id='my-carers'>
 <!-- TODO: List the associated carers -->
+	<% @patient.carers.each do |carer|%>
+		<ul>
+			<li><%= link_to carer.username.capitalize, patients_carer_path(@patient, carer) %></li>
+		</ul>
+	<%end%>
 </div>
 <h3>Invite a Carer</h3>
 <div id="invite-carer">

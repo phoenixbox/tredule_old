@@ -26,6 +26,8 @@ Railsplate::Application.routes.draw do
 
     get ":id/carers"                => "carers#index",
                                         as: :carers
+    get ":id/carers/:id"            => "carers#show",
+                                        as: :carer
     post ":id/carers"               => "carers#invite_carer",
                                         as: :invite_carer
     get ":id/carer-signup/:email"   => "carers#new",
