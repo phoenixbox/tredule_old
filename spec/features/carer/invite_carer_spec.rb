@@ -18,8 +18,8 @@ feature 'As a patient member of Tredule I can invite a carer' do
 			expect(page).to have_link('My Carers')
 			expect(page).to have_link('Logout')
 			click_link 'My Carers'
-			expect(page).to have_selector('div#invite-patient-email')
-			within(:css, 'div#invite-patient-email'){
+			expect(page).to have_selector('div#invite-carer')
+			within(:css, 'div#invite-carer'){
 				fill_in 'carer-username', :with => 'Shane'
 				select 'Family', from: 'carer-relationship'
 				fill_in 'carer-email', :with => 'rogerssh@tcd.ie'

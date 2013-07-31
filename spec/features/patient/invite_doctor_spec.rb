@@ -37,8 +37,14 @@ describe 'as an authenticated patient' do
 		expect(page).to have_selector('div#invite-carer')
 	end
 
-	it 'I can see a list of my carers' do
+	xit 'I can see a list of my carers' do
 		# TODO: Set the testing logic for viewing a carer of a patient when they are associated
+		visit patients_carers_path(patient)
+		expect(page).to have_content('My Carers')
+		expect(page).to have_selector('div#my-carers')
+		within(:css, 'div#my-carers'){
+			expect(page).to have_content(carer.username)
+		}
 	end
 
 end

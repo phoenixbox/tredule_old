@@ -1,16 +1,20 @@
 require 'spec_helper'
 
 describe 'as a member doctor' do
-	before(:each) do
-		@doctor = FactoryGirl.create(:doctor)
-		@patient = FactoryGirl.create(:patient)
-	end
+
+	let(:doctor){FactoryGirl.create(:doctor)}
+	# let(:patient){FactoryGirl.create(:patient)}
+
+	# before(:each) do
+	# 	@doctor = FactoryGirl.create(:doctor)
+	# 	@patient = FactoryGirl.create(:patient)
+	# end
 
 	it 'I can sign in' do
 		visit root_path
 		within(:css, 'div#user-sign-in'){
 			expect(page).to have_content("Sign-in")
-			fill_in 'sessions_email', :with => 'doctor@example.com'
+			fill_in 'sessions_email', :with => doctor.email
 			fill_in 'sessions_password', :with => 'password'
 			click_button 'Sign-in'
 		}
@@ -18,7 +22,7 @@ describe 'as a member doctor' do
 	end
 
 	it 'I can invite a client to be my patient' do
-		visit doctor_path(@doctor)
+		visit doctor_path(doctor)
 		click_link 'My Patients'
 		expect(page).to have_content 'My Patients'
 		expect(page).to have_content 'Invite a Patient'
