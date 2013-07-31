@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe 'as an authenticated user' do
 	let(:patient){FactoryGirl.create(:patient)}
-	# before(:each) do
-	# 	@patient = FactoryGirl.create(:patient)
-	# end
 
 	it 'I can sign in' do
 		visit root_path

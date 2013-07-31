@@ -3,12 +3,6 @@ require 'spec_helper'
 describe 'as a member doctor' do
 
 	let(:doctor){FactoryGirl.create(:doctor)}
-	# let(:patient){FactoryGirl.create(:patient)}
-
-	# before(:each) do
-	# 	@doctor = FactoryGirl.create(:doctor)
-	# 	@patient = FactoryGirl.create(:patient)
-	# end
 
 	it 'I can sign in' do
 		visit root_path
